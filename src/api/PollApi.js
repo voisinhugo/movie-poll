@@ -1,4 +1,4 @@
-const BASE_URL = "https://pacific-woodland-92365.herokuapp.com/";
+const BASE_URL = "https://hidden-reef-75246.herokuapp.com/";
 // const BASE_URL = "http://localhost:5000/";
 
 export const getPoll = async () => {
