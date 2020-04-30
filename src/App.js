@@ -1,11 +1,13 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 import { PollScreen } from './pages/PollScreen';
 
-function App() {
-  return (
-    <PollScreen />
-  );
-}
+const App = () => (
+  <Router>
+    <Switch>
+      <Route exact path="/movie-poll" component={PollScreen} />
+    </Switch>
+  </Router>
+);
 
 export default App;
