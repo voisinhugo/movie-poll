@@ -15,6 +15,7 @@ const Container = styled.div`
 
 const Title = styled.h1`
   color: ${theme.color.WHITE};
+  text-align: center;
 `;
 
 const AnswerContainer = styled.div`
@@ -46,6 +47,7 @@ const AnswerLabel = styled.p`
 const LineContainer = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
 `
 
 const InfoButton = styled.div`
@@ -67,7 +69,6 @@ const Spacer = styled.div`
   display: flex;
   flex: 1
 `
-
 
 export const PollScreen = () => {
   const [poll, setPoll] = useState(null);
