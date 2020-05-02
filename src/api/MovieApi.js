@@ -1,3 +1,5 @@
+import { MapFromTMDToMovie } from "./MovieApi.adapter";
+
 const BASE_URL = "https://api.themoviedb.org/3/";
 const SEARCH_MOVIE = "search/movie";
 const GET_MOVIE = "movie/";
@@ -8,7 +10,7 @@ export const searchMovie = async (queryString) => {
   const response = await fetch(`${BASE_URL}${SEARCH_MOVIE}?api_key=${API_KEY}&language=fr-FR&page=1&include_adult=false&query=${queryString}`);
   const data = await response.json();
   if (data.results.length) {
-    return data.results[0];
+    return data.results.map(MapFromTMDToMovie).slice(0,10);
   } else {
     return null;
   }
