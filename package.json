@@ -1,5 +1,6 @@
 {
   "name": "movie-poll",
+  "homepage": "http://voisinhugo.github.io/movie-poll",
   "version": "0.1.0",
   "private": true,
   "scripts": {
