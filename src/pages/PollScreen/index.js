@@ -88,9 +88,11 @@ export const PollScreen = () => {
   }
 
   const onAnswer = async (id) => {
-    !hasAnswered && setAnswerId(id);
-    const pollAnswers = await voteForPoll(id);
-    setResults(pollAnswers);
+    if (!hasAnswered) {
+      setAnswerId(id);
+      const pollAnswers = await voteForPoll(id);
+      setResults(pollAnswers);
+    }
   }
 
   useEffect(() => {
