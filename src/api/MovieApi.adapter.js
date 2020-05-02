@@ -1,3 +1,6 @@
-import pick from "lodash/pick";
+import { parseISO, getYear } from "date-fns";
 
-export const MapFromTMDToMovie = (TMDResult) => pick(TMDResult, ["id", "title"]);
+export const mapFromTMDToMovie = (TMDResult) => ({
+  id: TMDResult.id,
+  title: `${TMDResult.title} (${getYear(parseISO(TMDResult.release_date))})`
+});
