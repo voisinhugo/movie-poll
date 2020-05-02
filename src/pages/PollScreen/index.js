@@ -101,7 +101,11 @@ export const PollScreen = () => {
   }, []);
 
   const onInfoClick = (id) => {
-    setInfoStates({ ...infoStates, [id]: !infoStates[id] })
+    const states = Object.keys(infoStates).reduce(
+      (acc, curr) => ({ ...acc, curr: false }),
+      {}
+    );
+    setInfoStates({ ...states, [id]: !infoStates[id] })
   }
 
   return (
