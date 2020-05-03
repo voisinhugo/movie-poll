@@ -30,3 +30,19 @@ export const voteForPoll = async (answerId) => {
   const results = await response.json();
   return results;
 };
+
+export const addAnswerToPoll = async (id, title) => {
+  const body = { id, title };
+  const response = await fetch(
+    `${BASE_URL}poll/answer/append`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: simpleJsonToFormData(body)
+    }
+  );
+  const results = await response.json();
+  return results;
+};

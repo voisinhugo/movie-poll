@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { theme } from "../../theme";
-import { getPoll, voteForPoll } from "../../api/PollApi"
+import { getPoll, voteForPoll, addAnswerToPoll } from "../../api/PollApi"
 import { Loader } from "../../components/Loader";
 import { MovieDetails } from "../../components/MovieDetails";
+import { AddBar } from "../../components/AddBar";
 
 const Container = styled.div`
   display: flex;
@@ -108,6 +109,17 @@ export const PollScreen = () => {
     setInfoStates({ ...states, [id]: !infoStates[id] })
   }
 
+  const addNewPollAnswer = (movieId, movieTitle) => {
+    const movieIdString = movieId.toString();
+    if (!poll.answers.find(({ id }) => id === movieIdString)) {
+      addAnswerToPoll(movieId, movieTitle);
+      setPoll({ ...poll, answers: [
+        ...poll.answers,
+        { id: movieIdString, title: movieTitle } 
+      ]});
+    }
+  }
+
   return (
     poll ? 
     <Container>
@@ -126,6 +138,7 @@ export const PollScreen = () => {
           </InfoButton>
         </LineContainer>
       ))}
+      <AddBar addAnwser={addNewPollAnswer}/>
       {poll.answers.map(answer => (
         <div key={`info-${answer.id}`}>{infoStates[answer.id] && <MovieDetails movieId={answer.id} />}</div>
       ))}
